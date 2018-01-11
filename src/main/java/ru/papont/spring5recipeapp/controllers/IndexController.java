@@ -1,0 +1,16 @@
+package ru.papont.spring5recipeapp.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+/**
+ * Main controller
+ */
+@Controller
+public class IndexController {
+
+    @RequestMapping({"", "/", "/index"})
+    public String getIndexPage() {
+        return "index";
+    }
+}
