@@ -1,6 +1,7 @@
 package ru.papont.spring5recipeapp.model;
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -15,7 +16,7 @@ public class Category {
     private Long id;
     private String description;
 
-    @ManyToMany(mappedBy="categories")
+    @ManyToMany(mappedBy = "categories")
     private Set<Recipe> recipes;
 
 }

@@ -1,7 +1,8 @@
 package ru.papont.spring5recipeapp.model;
 
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
