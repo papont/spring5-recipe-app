@@ -6,15 +6,16 @@ import ru.papont.spring5recipeapp.model.Recipe;
 import ru.papont.spring5recipeapp.repositories.RecipeRepository;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Slf4j
 @Service
-public class RecipeServicesImpl implements RecipeService {
+public class RecipeServiceImpl implements RecipeService {
 
     private final RecipeRepository recipeRepository;
 
-    public RecipeServicesImpl(RecipeRepository recipeRepository) {
+    public RecipeServiceImpl(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
     }
 
@@ -25,5 +26,15 @@ public class RecipeServicesImpl implements RecipeService {
         Set<Recipe> recipeSet = new HashSet<>();
         recipeRepository.findAll().iterator().forEachRemaining(recipeSet::add);
         return recipeSet;
+    }
+
+    @Override
+    public Recipe findById(Long id) {
+        Optional<Recipe> recipeOptional = recipeRepository.findById(id);
+
+        if (!recipeOptional.isPresent()) {
+            throw new RuntimeException("Recipe not found");
+        }
+        return recipeOptional.get();
     }
 }
